@@ -1,0 +1,18 @@
+{
+  "version": "0.4.8",
+  "description": "Check proxies, list free ones, look up IPs, connect through a proxy, and give AI assistants the same tools (MCP)",
+  "homepage": "https://hproxy.com/tools/ai",
+  "license": "MIT",
+  "notes": "Written from the SHA256SUMS of the release built in public; this bucket is updated with every version.",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/hproxy-com/proxy-all-in-one-tool/releases/download/cli-v0.4.8/hproxy-cli-windows-x86_64.exe#/hproxy.exe",
+      "hash": "5ae10052dac09455ac2e72ed3bddbb81d8766d8c3339579ebb3afdd67a163294"
+    },
+    "arm64": {
+      "url": "https://github.com/hproxy-com/proxy-all-in-one-tool/releases/download/cli-v0.4.8/hproxy-cli-windows-arm64.exe#/hproxy.exe",
+      "hash": "feeecf25c3793272c098e6f4201f6a481925887fce19c4f93e0a06abcc7f830c"
+    }
+  },
+  "bin": "hproxy.exe"
+}
