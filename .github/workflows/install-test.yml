@@ -8,11 +8,14 @@ permissions:
   contents: read
 jobs:
   scoop:
-    name: scoop install on ${{ matrix.os }}
+    name: scoop install on ${{ matrix.os }} (${{ matrix.arch }})
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, windows-11-arm]
+        include:
+          - { os: windows-latest, arch: 64bit }
+          - { os: windows-11-arm, arch: arm64 }
+          - { os: windows-latest, arch: 32bit }
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -26,9 +29,9 @@ jobs:
       - name: Install from this bucket
         run: |
           scoop bucket add hproxy https://github.com/hproxy-com/scoop-bucket
-          scoop install hproxy/hproxy
+          scoop install hproxy/hproxy --arch ${{ matrix.arch }}
       - name: It answers with this version
         run: |
           $said = hproxy --version
           $said
-          if ($said -notmatch [regex]::Escape("hproxy 0.4.8")) { throw "it says $said, not hproxy 0.4.8" }
+          if ($said -notmatch [regex]::Escape("hproxy 0.4.9")) { throw "it says $said, not hproxy 0.4.9" }
